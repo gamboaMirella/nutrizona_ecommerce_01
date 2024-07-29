@@ -15,3 +15,5 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+
+require base_path('routes/admin.php'); //Carga las rutas de admin junto a las propias

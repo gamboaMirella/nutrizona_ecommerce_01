@@ -59,7 +59,7 @@ return [
 
     'features' => [
         // Features::termsAndPrivacyPolicy(),
-        // Features::profilePhotos(),
+        Features::profilePhotos(), //Para ver icono de perfil en el dashboard por defecto
         // Features::api(),
         // Features::teams(['invitations' => true]),
         Features::accountDeletion(),
