@@ -20,12 +20,12 @@
             'active' => request()->routeIs('admin.subcategories.*'),
         ],
 
-        /* [
+        [
             'icon' => 'bi bi-box-fill',
             'name' => 'Productos',
             'route' => route('admin.products.index'),
             'active' => request()->routeIs('admin.products.*'),
-        ], */
+        ], 
 
         /* [
             'icon' => 'fa-solid fa-clipboard-list',  

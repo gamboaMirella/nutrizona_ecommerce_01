@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Product;
+use App\Models\Subcategory;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -13,7 +14,9 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return view('admin.products.index');
+        $products = Product::orderBy('id', 'desc')
+            ->paginate(10);
+        return view('admin.products.index', compact('products'));
     }
 
     /**
@@ -21,7 +24,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.products.create');
     }
 
     /**
@@ -29,7 +32,24 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        /* $request->validate([
+            'subcategory_id' => 'required|exists:subcategories,id',
+            'name' => 'required'
+        ], [
+            'subcategory_id.required' => 'El campo subcategoría es obligatorio.',
+            'subcategory_id.exists' => 'La subcategoría seleccionada no es válida.',
+            'name.required' => 'El campo nombre es obligatorio.',
+        ]);
+
+        Product::create($request->all());
+
+        session()->flash('swal', [
+            'icon' => 'success',
+            'title' => '¡Correcto!',
+            'text' => 'Producto creado exitosamente'
+        ]);
+
+        return redirect()->route('admin.products.index'); */
     }
 
     /**
@@ -45,7 +65,8 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        /* $subcategories = Subcategory::all();
+        return view('admin.products.edit', compact('products', 'subcategories')); */
     }
 
     /**
@@ -53,7 +74,20 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+        /* $request->validate([
+            'subcategory_id' => 'required|exists:subcategories,id',
+            'name' => 'required'
+        ]);
+
+        $product->update($request->all());
+
+        session()->flash('swal', [
+            'icon' => 'success',
+            'title' => '¡Correcto!',
+            'text' => 'Producto actualizado exitosamente'
+        ]);
+
+        return redirect()->route('admin.products.edit', $product); */
     }
 
     /**

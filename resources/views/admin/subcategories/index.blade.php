@@ -77,7 +77,7 @@
             </svg>
             <span class="sr-only">Info</span>
             <div>
-                <span class="font-medium">Alerta!</span> Todavía no hay categorías registradas.
+                <span class="font-medium">Alerta!</span> Todavía no hay subcategorías registradas.
             </div>
         </div>
         <!--FIN DE ALERTA DE CATEGORIAS-->
