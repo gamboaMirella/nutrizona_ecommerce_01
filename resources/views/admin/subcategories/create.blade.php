@@ -12,9 +12,11 @@
     ],
 ]">
 
+@livewire('admin.subcategories.subcategory-create')
+
     <!--FORMULARIO PARA GUARDAR NUEVA SUBCATEGORIA-->
 
-<form action="{{ route('admin.subcategories.store') }}" method="POST">
+{{-- <form action="{{ route('admin.subcategories.store') }}" method="POST">
     @csrf
     <div class="card">
         <x-validation-errors class="mb-4" /> <!--Muestra error si el usuario no rellena un campo-->
@@ -54,7 +56,7 @@
             </x-button>
         </div>
     </div>
-</form>
+</form> --}}
 
     <!--FIN DE FORMULARIO PARA GUARDAR NUEVA SUBCATEGORIA-->
 

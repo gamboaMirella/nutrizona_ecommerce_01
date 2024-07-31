@@ -12,6 +12,7 @@
     ]
 ]">
 
+
   <!--FORMULARIO PARA GUARDAR NUEVA CATEGORIA-->
   <div class="card">
     <form action="{{route('admin.categories.store')}}" method="POST">

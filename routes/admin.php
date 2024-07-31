@@ -13,8 +13,6 @@ Route::get('/admin/dashboard', function () { //Poner siempre: /admin/----
 
 Route::resource('categories', CategoryController::class);
 Route::resource('subcategories', SubcategoryController::class);
-Route::resource('products', ProductController::class);
-
 
 
 

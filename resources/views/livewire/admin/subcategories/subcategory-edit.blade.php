@@ -1,48 +1,53 @@
-<x-admin-layout :breadcrumbs="[
-    [
-        'name' => 'Dashboard',
-        'route' => route('admin.dashboard'),
-    ],
-    [
-        'name' => 'Categorías',
-        'route' => route('admin.categories.index'),
-    ],
-    [
-        'name' => $category->name,
-    ],
-]">
+<div>
+    <form wire:submit="save">
+        <div class="card">
+            <x-validation-errors class="mb-4" /> <!--Muestra error si el usuario no rellena un campo-->
+    
+            <div class="mb-4">
+                <x-label class="mb-2">
+                    Categoría
+                </x-label> 
 
-    <!--FORMULARIO PARA EDITAR CATEGORIA-->
-    <div class="card">
-        <!--Utiliza metodo PUT Y POST-->
-        <form action="{{ route('admin.categories.update', $category) }}" method="POST">
-            @csrf
-            @method('PUT')
+                <x-select name="category_id" 
+                            class="w-full" 
+                            wire:model.live="subcategoryEdit.category_id">
 
+                    <option value="" disabled>
+                        Seleccione una categoría
+                    </option>
+                    @foreach ($this->categories as $category) <!--?: $this-> -->
+                        <option value="{{$category->id}}">
+                            {{$category->name}}
+                        </option>
+                    @endforeach
+                </x-select>
+            </div>
+    
             <div class="mb-4">
                 <x-label class="mb-2"> <!--Llamar al componente label-->
                     Nombre
                 </x-label>
-                <x-input class="w-full" placeholder="Ingrese el nombre de la nueva categoría" name="name"
-                    value="{{ old('name', $category->name) }}" />
-                <!--Llamar al componente imput: Se le asigna el nombre de la BD. Con old se recupera el nombre en caso falle alguna regla de validación, SI NO FALLA Se recupera el nombre ya guardado de la familia-->
+                <x-input class="w-full" 
+                        placeholder="Ingrese el nombre de la nueva subcategoría"
+                        wire:model.live="subcategoryEdit.name" />
             </div>
 
+
+    
             <div class="flex justify-center">
-                
                 <x-danger-button onclick="confirmDelete()" >
                     Eliminar
                 </x-danger-button>
+
                 <x-button class="ml-2">
                     Actualizar
                 </x-button>
-
             </div>
-        </form>
-    </div>
-    <!--FIN DE FORMULARIO PARA EDITAR CATEGORIA-->
+        </div>
+    </form>
 
-    <form action="{{ route('admin.categories.destroy', $category) }}" method="POST" id="delete-form">
+
+    <form action="{{ route('admin.subcategories.destroy', $subcategory) }}" method="POST" id="delete-form">
         @csrf
         @method('DELETE')
 
@@ -70,5 +75,4 @@
             }
         </script>
     @endpush
-
-</x-admin-layout>
+</div>
