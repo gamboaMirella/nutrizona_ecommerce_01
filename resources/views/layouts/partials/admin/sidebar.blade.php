@@ -20,19 +20,19 @@
             'active' => request()->routeIs('admin.subcategories.*'),
         ],
 
-        /* [
+        [
             'icon' => 'bi bi-box-fill',
             'name' => 'Productos',
             'route' => route('admin.products.index'),
             'active' => request()->routeIs('admin.products.*'),
-        ], */ 
+        ], 
 
-        /* [
-            'icon' => 'fa-solid fa-clipboard-list',  
-            'name' => 'Pedidos',
-            'route' => route('admin.pedidos.index'),
-            'active' => request()->routeIs('admin.pedidos.*'),
-        ], */
+        [
+            'icon' => 'fa-solid fa-images',  
+            'name' => 'Portadas',
+            'route' => route('admin.covers.index'),
+            'active' => request()->routeIs('admin.covers.*'),
+        ],
     ];
 @endphp
 <!--Se va a colocar un icono, nombre, ruta, verificar si se encuentra activo o no-->

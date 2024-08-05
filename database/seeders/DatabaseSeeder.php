@@ -21,8 +21,11 @@ class DatabaseSeeder extends Seeder
         // User::factory(10)->create();
 
         User::factory()->create([ /**Crear usuario por defecto */
-            'name' => 'Daniel Perez',
+            'name' => 'Daniel',
+            'last_name' => 'Perez',
+            'document_number' => '18224495',
             'email' => 'daniel70@gmail.com',
+            'phone' => '945469712',
             'password'=> bcrypt('12345678')
         ]);
 
@@ -31,6 +34,6 @@ class DatabaseSeeder extends Seeder
             CategorySeeder::class,
         ]);
 
-        Product::factory(100)->create();
+        Product::factory(50)->create();
     }
 }
