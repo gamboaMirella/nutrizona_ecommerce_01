@@ -19,7 +19,9 @@ return Application::configure(basePath: dirname(__DIR__))
         }
     )
     ->withMiddleware(function (Middleware $middleware) {
-        //
+        $middleware->validateCsrfTokens(except: [
+            'checkout/paid' // <-- exclude this route
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //
