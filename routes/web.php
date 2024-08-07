@@ -7,6 +7,8 @@ use App\Http\Controllers\SubcategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ShippingController;
 use App\Http\Controllers\WelcomeController;
+use App\Models\Order;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Database\Seeders\CategorySeeder;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Support\Facades\Route;
@@ -40,8 +42,18 @@ Route::get('gracias', function() {
 
 
 Route::get('prueba', function() {
-    Cart::instance('shopping');
-    
-    return Cart::content();
+    $order = Order::first();
+
+    $pdf = Pdf::loadView('orders.ticket', compact('order'))
+        ->setPaper('a5');
+
+    // return $pdf->stream();
+    $pdf->save(storage_path('app/public/tickets/ticket-' . $order->id . '.pdf'));
+
+    $order->pdf_path = 'tickest/ticket-' . $order->id . '.pdf';
+    $order->save();
+
+    // return "Ticket generado correctamente";
+    // return view('orders.ticket', compact('order'));
 });
 
