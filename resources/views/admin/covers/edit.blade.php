@@ -29,7 +29,7 @@
                     <input type="file" class="hidden" accept="image/*" name="image" onchange="previewImage(event, '#imgPreview')">
                 </label>
             </div>
-            <img src="{{ $cover->image }}" alt="Imagen de portada"
+            <img src="{{ asset('storage/' . $cover->image_path) }}" alt="Imagen de portada"
                 class="aspect-[3/1] w-full object-cover object-center"
                 id="imgPreview">
         </figure>
@@ -96,7 +96,7 @@
 
                 //Recuperamos la etiqueta img donde cargaremos la imagen
                 $imgPreview = document.querySelector(querySelector);
-
+                // console.log($imgPreview)
                 // Verificamos si existe una imagen seleccionada
                 if (!input.files.length) return
 
@@ -108,6 +108,7 @@
 
                 //Modificamos el atributo src de la etiqueta img
                 $imgPreview.src = objectURL;
+                //console.log($imgPreview.src)
             }
         </script>
     @endpush

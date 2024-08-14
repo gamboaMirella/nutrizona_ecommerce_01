@@ -40,5 +40,5 @@
         </div>
     </form>
 
-    @dump($subcategory)
+    {{-- @dump($subcategory) --}}
 </div>

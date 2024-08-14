@@ -16,24 +16,28 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        Storage::deleteDirectory('products');
+        Storage::deleteDirectory('products'); //para manipular los archivos cada vez que se realiza la migración
         Storage::makeDirectory('products');
-        // User::factory(10)->create();
 
-        User::factory()->create([ /**Crear usuario por defecto */
-            'name' => 'Daniel',
-            'last_name' => 'Perez',
-            'document_number' => '18224495',
-            'email' => 'daniel70@gmail.com',
-            'phone' => '945469712',
-            'password'=> bcrypt('12345678')
-        ]);
+        // User::factory()->create([ /**Crear usuario por defecto */
+        //     'name' => 'Daniel',
+        //     'last_name' => 'Perez',
+        //     'document_number' => '18224495',
+        //     'email' => 'daniel70@gmail.com',
+        //     'phone' => '945564412',
+        //     'password'=> bcrypt('12345678')
+        // ]);
 
         //Llamar al CategorySeeder: Poblar la DB con las categorias definidas
         $this->call([
             CategorySeeder::class,
         ]);
+        
+        $this->call([
+            UserSeeder::class,
+        ]);
 
+        User::factory(20)->create();
         Product::factory(50)->create();
     }
 }

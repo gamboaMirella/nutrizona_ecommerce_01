@@ -50,10 +50,10 @@ Route::get('prueba', function() {
     // return $pdf->stream();
     $pdf->save(storage_path('app/public/tickets/ticket-' . $order->id . '.pdf'));
 
-    $order->pdf_path = 'tickest/ticket-' . $order->id . '.pdf';
+    $order->pdf_path = 'tickets/ticket-' . $order->id . '.pdf';
     $order->save();
 
     // return "Ticket generado correctamente";
-    // return view('orders.ticket', compact('order'));
+    return view('orders.ticket', compact('order'));
 });
 

@@ -18,10 +18,15 @@
     
     
             <img class="aspect-[16/9] object-cover object-center w-full" 
-            src="{{ $image ? $image->temporaryUrl() : Storage::url($productEdit['image_path']) }}" 
+            src="{{ $image ? $image->temporaryUrl() : asset('storage/img/no-image.png') }}" 
+            {{-- src="{{ $image ? $image->temporaryUrl() : Storage::url($productEdit['image_path']) }}"  --}}
+            {{-- src="{{ $image ? $image->temporaryUrl() : asset($productEdit['image_path']) }}"  --}}
             alt="Imagen no disponible">
         </figure>
-        
+
+        {{-- {{dump($productEdit['image_path']) }} --}}
+
+        {{-- {{dump(Storage::url($productEdit['image_path']))}} --}}
 
         <x-validation-errors class="mb-4" />
     
@@ -108,8 +113,6 @@
 
         </div>
     </form>
-
-
 
 
     <form action="{{ route('admin.products.destroy', $product) }}" method="POST" id="delete-form">

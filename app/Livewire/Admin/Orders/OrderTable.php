@@ -50,7 +50,7 @@ class OrderTable extends DataTableComponent
                 })
                 ->sortable(),
 
-            Column::make("Actions")
+            Column::make("Acciones")
                 ->label(function ($row) {
                     return view('admin.orders.actions', ['order' => $row]);
                 }),

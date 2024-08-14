@@ -16,15 +16,15 @@
 
     @if ($products->count())
         <!--TABLA PARA MOSTRAR CATEGORIAS-->
-        <div class="relative overflow-x-auto">
-            <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+        <div class="relative overflow-x-auto rounded-lg shadow-lg">
+            <table class="w-full text-sm text-left rtl:text-right text-gray-700">
+                <thead class="text-xs text-black uppercase bg-orange-300">
                     <tr>
                         <th scope="col" class="px-6 py-3">
                             ID
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            SKU
+                            Código
                         </th>
                         <th scope="col" class="px-6 py-3">
                             Nombre
@@ -32,17 +32,18 @@
                         <th scope="col" class="px-6 py-3">
                             Precio
                         </th>
-                        <th scope="col" class="px-6 py-3">
 
+                        <th scope="col" class="px-6 py-3">
+                            Acción
                         </th>
                     </tr>
                 </thead>
                 <tbody>
 
                     @foreach ($products as $product)
-                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                        <tr class="bg-gray-100 border-b">
                             <th scope="row"
-                                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
                                 {{ $product->id }}
                             </th>
                             <td class="px-6 py-4">
@@ -54,10 +55,20 @@
                             <td class="px-6 py-4">
                                 {{ $product->price }}
                             </td>
-                            <td class="px-6 py-4">
-                                <a href="{{ route('admin.products.edit', $product) }}">
-                                    Editar
-                                </a>
+
+                            <td >
+                                <div class="flex justify-start">
+
+                                    <a href="{{ route('admin.products.edit', $product) }}" 
+                                    class="flex flex-col items-center hover:text-orange-600 px-2">
+                                        <i class="fa-solid fa-pen-to-square text-xm"></i> <!-- Ícono  -->
+                                        <span class="text-xs">Editar</span> <!-- Texto naranja -->
+                                    </a>
+
+                                    {{-- Agregar más iconos --}}
+                                    
+                                </div>
+                                    
                             </td>
                         </tr>
                     @endforeach
@@ -68,9 +79,11 @@
         <!--FIN DE TABLA PARA MOSTRAR CATEGORIAS-->
 
         <!--LINKS DE PAGINACION-->
-        <div class="mt-4">
-            {{ $products->links() }}
-        </div>
+        @if($products->hasPages())
+            <div class="mt-4">
+                {{ $products->links() }}
+            </div>
+        @endif
         <!--FIN LINKS DE PAGINACION-->
     @else
         <!--ALERTA DE PRODUCTOS-->

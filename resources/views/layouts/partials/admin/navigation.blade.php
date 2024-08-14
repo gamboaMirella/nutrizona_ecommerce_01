@@ -16,11 +16,12 @@
                   </svg>
               </button>
               <a href="#" class="flex ms-2 md:me-24">
-                  <img src="https://flowbite.com/docs/images/logo.svg" class="h-8 me-3" alt="Nutrizona" />
+                  <img src="{{ asset('storage/img/nutrizona_logo.png') }}" class="h-8 me-3" alt="Nutrizona" />
                   <span
-                      class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">Nutrizona</span>
+                      class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap text-white">Nutrizona</span>
               </a>
           </div>
+
           <div class="flex items-center">
               <div class="flex items-center ms-3">
                 <x-dropdown align="right" width="48"> <!--BOTON DE PERFIL-->

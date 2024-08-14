@@ -30,7 +30,7 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                 @foreach ($products as $product)
                     <article class="bg-white overflow-hidden shadow rounded">
-                        <img src="{{ $product->image_path }}" class="w-full h-48 object-cover object-center">
+                        <img src="{{asset('storage/' .  $product->image_path) }}" class="w-full h-48 object-cover object-center">
 
                         <div class="p-4">
                             <h1 class="text-lg font-blod text-gray-700 line-clamp-2 min-h-[56px] mb-2">

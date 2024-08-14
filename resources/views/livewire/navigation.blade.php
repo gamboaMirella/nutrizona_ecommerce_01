@@ -149,7 +149,7 @@
                             {{ $this->categoryName }}
                         </p>
 
-                        <a href="{{ route('categories.show', $category_id) }}" class="btn btn-blue">
+                        <a href="{{ route('categories.show', $category_id) }}" class="btn btn-orange">
                             Ver todo
                         </a>
                     </div>

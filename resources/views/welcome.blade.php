@@ -11,11 +11,12 @@
             <!-- Slides -->
             @foreach ($covers as $cover)
               <div class="swiper-slide">
-                <img src="{{ $cover->image }}" class="w-full aspect-[3/1] object-cover object-center"/>
-
+                <img src="{{ asset('storage/' . $cover->image_path )}}" class="w-full aspect-[3/1] object-cover object-center"/>
+                {{-- <img src="{{ asset('storage\covers\nu1t8pz8bVT95FZI6m69bf933plqJBHsUQviyKJp.png') }}" class="w-full aspect-[3/1] object-cover object-center"/> --}}
               </div>
             @endforeach
             
+             {{-- {{ dd(asset('storage/' . $cover->image_path))}} --}}
 
         </div>
         <!-- If we need pagination -->
@@ -35,7 +36,7 @@
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         @foreach ($lastProducts as $product)
             <article class="bg-white overflow-hidden shadow rounded">
-              <img src="{{ $product->image_path }}" class="w-full h-48 object-cover object-center">
+              <img src="{{ 'storage/' . $product->image_path }}" class="w-full h-48 object-cover object-center">
 
               <div class="p-4">
                 <h1 class="text-lg font-blod text-gray-700 line-clamp-2 min-h-[56px] mb-2">
@@ -43,7 +44,7 @@
                 </h1>
 
                 <p class="text-gray-600 mb-4">
-                  S/ {{$product->price}}
+                  S/. {{$product->price}}
                 </p>
 
                 <a href="{{route('products.show', $product)}}" class="btn btn-orange block w-full text-center">

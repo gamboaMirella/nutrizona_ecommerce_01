@@ -19,8 +19,8 @@
                     @forelse (Cart::content() as $item)
                         
                         <li class="lg:flex">
-                            <img class="w-full lg:w-36 aspect-[16/9] object-cover object-center mr-2 " src="{{$item->options->image}}" alt="image">
-
+                            <img class="w-full lg:w-36 aspect-[16/9] object-cover object-center mr-2 " src="{{'storage/' . $item->options->image}}" alt="image">
+                            
                             <div class="w-80">
                                 <p class="text-sm">
                                     <a href="{{route('products.show', $item->id)}}">
@@ -54,7 +54,7 @@
                                     +
                                 </button>
                             </div>
-
+                            
                         </li>
                     @empty
                         <p class="text-center"> 
@@ -84,9 +84,13 @@
                 <a href="{{route('shipping.index')}}" class="btn btn-orange block w-full text-center">
                     Continuar compra
                 </a>
+
+                <div class="mt-2">
+                    <img class="h-6 mr-auto" src="https://codersfree.com/img/payments/credit-cards.png">
+                </div>
             </div>
 
         </div>
-
+        {{-- @dump($item) --}}
     </div>
 </div>

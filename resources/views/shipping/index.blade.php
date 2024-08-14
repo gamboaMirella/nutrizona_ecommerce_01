@@ -32,7 +32,7 @@
                 @foreach (Cart::content() as $item)
                   <li class="flex items-center space-x-4">
                     <figure class="shrink-0">
-                      <img class="h-12 aspect-square" src="{{ $item->options->image }}">
+                      <img class="h-12 aspect-square" src="{{ asset( 'storage/' . $item->options->image) }}">
                     </figure>
 
                     <div class="flex-1">

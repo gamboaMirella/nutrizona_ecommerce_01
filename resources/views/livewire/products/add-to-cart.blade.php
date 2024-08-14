@@ -7,9 +7,9 @@
         <div class="col-span-1">
           
           <figure>
-            <img src="{{$product->image_path}}" class="aspect-[1/1] w-full object-cover object-center" alt="">
+            <img src="{{asset('storage/' . $product->image_path)}}" class="aspect-[1/1] w-full object-cover object-center" alt="">
           </figure>
-
+          {{-- {{dump($product)}} --}}
         </div>
 
         <div class="col-span-1">

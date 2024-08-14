@@ -16,10 +16,11 @@
           <div class="shadow rounded-lg overflow-hidden border border-gray-400 ">
             <ul class="divide-y divide-gray-300">
 
-              <li >
+              {{-- radio superior --}}
+              <li > 
                 <label class="p-4 flex items-center">
 
-                  <input type="radio" x-model="pagos" value="1">
+                  <input type="radio" x-model="pagos" value="1" class="cursor-pointer">
 
                   <span class="ml-2">
                     Tarjeta de débito / crédito
@@ -34,15 +35,16 @@
                   <i class="fa-regular fa-credit-card text-9xl"></i>
 
                   <p class="mt-2">
-                    Al hacer clic en "Pagar ahora" se te redirigirá a Niubiz para contiuar tu compra de manera segura.  
+                    Al hacer clic en "Pagar ahora" se te redirigirá a Niubiz para continuar tu compra de manera segura.  
                   </p>
                 </div>
 
               </li>
 
+              {{-- radio inferior --}}
               <li>
-                <label class="p-4 flex items-center border-t border-gray-400">
-                  <input type="radio" x-model="pagos" value="2">
+                <label class="p-4 flex items-center ">
+                  <input type="radio" x-model="pagos" value="2" class="cursor-pointer">
 
                   <span class="ml-2">
                     Depósito Bancario o Yape
@@ -50,7 +52,7 @@
 
                 </label>
 
-                <div class="p-4 bg-gray-100 flex justify-center border-t border-gray-400" 
+                <div class="p-4 bg-orange-50 flex justify-center border-t border-gray-400" 
                   x-cloak  
                   x-show="pagos == 2">
                   
@@ -61,7 +63,7 @@
                     <p>- CCI: 002-158-987654321</p>
                     <p>- Razón social: NutrizonaUnt S.A.C</p>
                     <p>- RUC: 20987654321</p>
-                    <p>2. Pagp pòr Yape</p>
+                    <p>2. Pago por Yape</p>
                     <p>- Yape:  (NutrizonaUnt S.A.C)</p>
                     <p>
                       Enviar el comprobante de pago a 961988445
@@ -89,7 +91,7 @@
             <li class="flex items-center space-x-4">
 
               <div class="flex-shrink-0 relative">
-                <img class="h-16 aspect-square" src="{{$item->options->image}}" >
+                <img class="h-16 aspect-square" src="{{ asset('storage/' . $item->options->image) }} " >
 
                   <div class="flex justify-center items-center h-6 w-6 bg-gray-900 bg-opacity-70 rounded-full
                       absolute -right-2 -top-2">
@@ -157,7 +159,7 @@
 
           <div >
             <button onclick="VisanetCheckout.open()" class="btn btn-orange w-full ">
-              Finalizar compra
+              Pagar ahora
             </button>
 
             @if (session('niubiz'))
@@ -226,8 +228,8 @@
           amount: amount,
           expirationminutes:'20',
           timeouturl:'about:blank',
-          merchantlogo:'img/comercio.png',
-          formbuttoncolor:'#000000',
+          merchantlogo:'storage/img/empresa.png',
+          formbuttoncolor:'#ff6d05', //orange
           action:"{{ route('checkout.paid') }}?amount=" + amount + "&purchaseNumber=" + purchasenumber,
           complete: function(params) {
             alert(JSON.stringify(params));

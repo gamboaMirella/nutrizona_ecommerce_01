@@ -45,6 +45,12 @@
             'route' => route('admin.orders.index'),
             'active' => request()->routeIs('admin.orders.*'),
         ],
+        [
+            'name' => 'Usuarios', 
+            'icon' => 'fa-solid fa-users',
+            'route' => route('admin.users.index'),
+            'active' => request()->routeIs('admin.users.*'),
+        ],
     ];
 @endphp
 <!--Se va a colocar un icono, nombre, ruta, verificar si se encuentra activo o no-->

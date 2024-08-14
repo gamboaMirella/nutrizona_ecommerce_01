@@ -93,11 +93,11 @@ class CheckoutController extends Controller
             $address = Address::where('user_id', auth()->id())
                 ->where('default', true)
                 ->first();
-
+            //se guarda la orden en la BD
             Order::create([
                 'user_id' => auth()->id(),
                 'content' => Cart::instance('shopping')->content(),
-                'address' => $address,
+                'address' => $address->description, //verificar campo correcto 
                 'transaction_id' => $response['dataMap']['TRANSACTION_ID'],
                 'total' => Cart::subtotal(),
             ]);
@@ -107,11 +107,11 @@ class CheckoutController extends Controller
             return redirect()->route('gracias');
         }
 
-        return redirect()->route('checkout.index');
+        return redirect()->route('checkout.index'); //si es que no se produce la compra o hay error
     }
 }
 
-// Datos de prueba
+// Datos de prueba para compras con tarjeta en pasarela niubiz
 // Escenario	            Número	            Mes/año	    CVV	    Código de Acción
 
 // Venta exitosa –          4474118355632240	03/2028	    111	    000
