@@ -51,14 +51,13 @@
                   Ver más
                 </a>
 
-
-
               </div>
 
 
             </article>
         @endforeach
       </div>
+    
     </x-container>
 
     @push('js')
@@ -85,6 +84,7 @@
                     prevEl: '.swiper-button-prev',
                 },
             });
+
         </script>
     @endpush
 
