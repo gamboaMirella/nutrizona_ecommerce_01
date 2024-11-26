@@ -16,9 +16,10 @@ class WelcomeController extends Controller
                 $query->whereDate('end_at', '>=', now())
                     ->orWhereNull('end_at');
             })
-            
             ->orderBy('order')->get();
-        $lastProducts = Product::orderBy('created_at', 'desc')
+
+        // Cambiar el orden de los productos por ID en orden ascendente
+        $lastProducts = Product::orderBy('id', 'asc')
             ->take(12)
             ->get();
         

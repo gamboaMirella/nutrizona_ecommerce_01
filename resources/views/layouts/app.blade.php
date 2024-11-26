@@ -68,7 +68,7 @@
         <style>
             #fontSizeControl {
               position: fixed;
-              bottom: 1.25rem; /* bottom-5 */
+              top: 4rem; /* bottom-5 */
               right: 1.25rem; /* right-5 */
               display: flex;
               align-items: center;
